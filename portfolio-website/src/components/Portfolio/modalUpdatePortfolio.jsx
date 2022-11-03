@@ -7,13 +7,8 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
-import UseSubscriptionPortfolio from "../../configs/Hooks/Operation/subscriptonQuery";
-import Swal from "sweetalert2";
 import { useState } from "react";
-import UseDeletePortfolio from "../../configs/Hooks/Operation/mutationDeletePortfolio";
-
-import UseCreatePortfolio from "../../configs/Hooks/Operation/mutationInsertPortfolio";
-import { EditAction, TrashAction } from "../../assets/svgs/action";
+import { EditAction } from "../../assets/svgs/action";
 import UseUpdatePortfolio from "../../configs/Hooks/Operation/mutationUpdatePortfolio";
 
 const ModalUpdatePortfolio = ({ data }) => {
@@ -26,18 +21,78 @@ const ModalUpdatePortfolio = ({ data }) => {
     description,
   };
 
+  console.log(updatePortfolio);
   const [toggleEdit, setToggleEdit] = useState(false);
+  const [imageUpdate, setImageUpdate] = useState(null);
   const [dataUpdate, setDataUpdate] = useState(updatePortfolio);
   const imageRef = useRef();
 
-  const { updatePortfolioData, updatePortfolioLoadng } = UseUpdatePortfolio();
+  const { updatePortfolioData, updatePortfolioLoadng, updatePortfolioError } =
+    UseUpdatePortfolio();
 
   const handleModalEdit = () => {
     setToggleEdit(!toggleEdit);
   };
 
+  const handleUpload = (imageUpdate) => {
+    if (!imageUpdate) {
+      updatePortfolioData({
+        variables: {
+          id: id,
+          title: dataUpdate.title,
+          description: dataUpdate.description,
+          image,
+        },
+      });
+    } else {
+      const imageName = ref(storage, `files/${imageUpdate.name}`);
+      const uploadTask = uploadBytesResumable(imageName, imageUpdate);
+
+      uploadTask.then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((downloadUrl) => {
+          const fileUrl = image;
+          const fileRef = ref(storage, fileUrl);
+          deleteObject(fileRef).then(() => {
+            updatePortfolioData({
+              variables: {
+                id: id,
+                title: dataUpdate.title,
+                description: dataUpdate.description,
+                image: downloadUrl,
+              },
+            });
+          });
+        });
+      });
+    }
+  };
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    if (name === "image") {
+      setImageUpdate(e.target.files[0]);
+    } else {
+      setDataUpdate({ ...dataUpdate, [name]: value });
+    }
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    handleUpload(imageUpdate);
+    setDataUpdate(dataUpdate);
+    setToggleEdit(!toggleEdit);
+    setImageUpdate(null);
+    imageRef.current.value = "";
+  };
+
   if (updatePortfolioLoadng) {
     return <LoadingSvg />;
+  }
+
+  if (updatePortfolioError) {
+    return <h1>`${updatePortfolioError.message}`</h1>;
   }
   return (
     <>
@@ -57,7 +112,7 @@ const ModalUpdatePortfolio = ({ data }) => {
           <div className="relative w-full max-w-2xl h-full md:h-auto">
             {/* Modal content */}
             <form
-              onSubmit={() => {}}
+              onSubmit={handleUpdate}
               className="relative bg-white rounded-lg shadow dark:bg-gray-700"
             >
               {/* Modal header */}
@@ -100,9 +155,10 @@ const ModalUpdatePortfolio = ({ data }) => {
                       type="text"
                       name="title"
                       id="title"
+                      value={dataUpdate.title}
                       className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Insert Description"
-                      onChange={() => {}}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -116,9 +172,10 @@ const ModalUpdatePortfolio = ({ data }) => {
                     <textarea
                       name="description"
                       id="description"
+                      value={dataUpdate.description}
                       className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Insert Description"
-                      onChange={() => {}}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -134,9 +191,19 @@ const ModalUpdatePortfolio = ({ data }) => {
                         className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         id="file_input"
                         type="file"
+                        ref={imageRef}
                         name="image"
-                        onChange={() => {}}
+                        onChange={handleChange}
                       />
+
+                      <div className="flex flex-wrap w-max-[200] justify-center mt-3">
+                        <img
+                          src={image}
+                          alt="uploaded file"
+                          height={200}
+                          width={200}
+                        />
+                      </div>
                       {/*  {progresspercent}*/}
                     </>
                   </div>
