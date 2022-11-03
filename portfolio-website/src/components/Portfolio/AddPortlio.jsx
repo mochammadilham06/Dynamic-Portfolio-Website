@@ -11,7 +11,6 @@ import UseSubscriptionPortfolio from "../../configs/Hooks/Operation/subscriptonQ
 import Swal from "sweetalert2";
 import { useState } from "react";
 import UseDeletePortfolio from "../../configs/Hooks/Operation/mutationDeletePortfolio";
-
 import UseCreatePortfolio from "../../configs/Hooks/Operation/mutationInsertPortfolio";
 import { TrashAction } from "../../assets/svgs/action";
 import ModalUpdatePortfolio from "./modalUpdatePortfolio";

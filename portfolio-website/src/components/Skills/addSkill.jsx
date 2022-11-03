@@ -2,16 +2,157 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import UseSubscriptionSkills from "../../configs/Hooks/Operation/subscriptionQuerys";
 import LoadingSvg from "../../assets/svgs";
+import ModalUpdateSkills from "./modalUpdateSkills";
+import { storage } from "../../configs/Firebase/firebase-config";
+import {
+  deleteObject,
+  ref,
+  getDownloadURL,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { TrashAction } from "../../assets/svgs/action";
+import UseCreateSkills from "../../configs/Hooks/Operation/mutationInsertSkills";
+import UseDeleteSkills from "../../configs/Hooks/Operation/mutationDeleteSkills";
+
+const skills = {
+  title: "",
+  description: "",
+  image: "",
+};
+
 const AddSkill = () => {
+  const [progresspercent, setProgresspercent] = useState(0);
+  const [dataSkills, setDataSkills] = useState(skills);
+  const [toggle, setToggle] = useState(false);
+  const [imgUrl, setImgUrl] = useState(null);
+
+  //Subscription
   const { skillSubscription, skillLoading, skillError } =
     UseSubscriptionSkills();
-  const [toggle, setToggle] = useState(false);
 
+  //Mutation
+  const { deleteSkillsData, deleteSkillsLoading } = UseDeleteSkills();
+  const { createSkillsData, createSkillsLoading } = UseCreateSkills();
+
+  //All Handle
   const handleModal = () => {
     setToggle(!toggle);
   };
 
-  if (skillLoading) {
+  const handleChange = (e) => {
+    setDataSkills({
+      ...dataSkills,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const HANDLECHANGEFIREBASE = (e) => {
+    e.preventDefault();
+    const file = e.target?.files[0];
+    console.log(file);
+    if (!file) return;
+    const storageRef = ref(storage, `skills/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgresspercent(progress);
+      },
+      (error) => {
+        alert(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setImgUrl(downloadURL);
+        });
+      }
+    );
+  };
+
+  const HANDLEDELETE = (id, image) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton:
+          "focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900",
+        cancelButton:
+          "text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          try {
+            const fileUrl = image;
+            const fileRef = ref(storage, fileUrl);
+            console.log(fileUrl);
+            deleteObject(fileRef).then(() => {
+              deleteSkillsData({
+                variables: {
+                  id: id,
+                },
+                onCompleted: () => {
+                  Swal.fire({
+                    icon: "success",
+                    title: "Deleted Data Completed",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                },
+              });
+            });
+          } catch (error) {
+            return Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Delete is Failed ",
+            });
+          }
+        }
+      });
+  };
+
+  const HANDLECREATE = (e) => {
+    e.preventDefault();
+    handleModal();
+    try {
+      createSkillsData({
+        variables: {
+          objects: {
+            title: dataSkills.title,
+            description: dataSkills.description,
+            image: imgUrl,
+          },
+        },
+        onCompleted: () => {
+          Swal.fire({
+            icon: "success",
+            title: "Portfolio Added Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        },
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  if (deleteSkillsLoading || skillLoading || createSkillsLoading) {
     return <LoadingSvg />;
   }
 
@@ -19,21 +160,22 @@ const AddSkill = () => {
     return Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "Login Failed ",
+      text: "Data is not found ",
     });
   }
 
   return (
     <div>
-      <div className="flex flex-row-reverse mb-3">
+      <div className="flex flex-row-reverse mb-5">
         <button
           onClick={handleModal}
           type="button"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
-          Add Skill
+          Add Skills!
         </button>
       </div>
+
       <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -50,7 +192,7 @@ const AddSkill = () => {
               <th scope="col" className="py-3 px-6">
                 Description
               </th>
-              <th scope="col" className="py-3 px-6">
+              <th scope="col" className="py-3 px-6 text-center">
                 Image
               </th>
               <th scope="col" className="py-3 px-6">
@@ -70,23 +212,20 @@ const AddSkill = () => {
                 >
                   {items.id}
                 </th>
-                <td className="py-4 px-6">{items.user.first_name}</td>
+                <td className="py-4 px-6">{items.user.last_name}</td>
                 <td className="py-4 px-6">{items.title}</td>
                 <td className="py-4 px-6">{items.description}</td>
-                <td className="py-4 px-6">{items.image}</td>
                 <td className="py-4 px-6">
-                  <div className="flex flex-wrap justify-between">
+                  <img src={items.image} alt="Portfolio" />
+                </td>
+                <td className="py-4 px-6">
+                  <div className="flex flex-row justify-between gap-4">
+                    <ModalUpdateSkills data={items} />
                     <button
-                      onClick={() => console.log(items.id)}
+                      onClick={() => HANDLEDELETE(items.id, items.image)}
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => console.log(items.id)}
-                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Delete
+                      <img src={TrashAction} alt="delete" />
                     </button>
                   </div>
                 </td>
@@ -100,12 +239,12 @@ const AddSkill = () => {
             id="editUserModal"
             tabIndex={-1}
             aria-hidden="true"
-            className="overflow-y-auto overflow-x-hidden fixed top-0  left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full"
+            className="flex flex-row overflow-y-auto overflow-x-hidden fixed top-0  left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full"
           >
             <div className="relative w-full max-w-2xl h-full md:h-auto">
               {/* Modal content */}
               <form
-                action="#"
+                onSubmit={HANDLECREATE}
                 className="relative bg-white rounded-lg shadow dark:bg-gray-700"
               >
                 {/* Modal header */}
@@ -149,8 +288,9 @@ const AddSkill = () => {
                         name="title"
                         id="title"
                         className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Bonnie"
-                        required=""
+                        placeholder="Insert Description"
+                        onChange={handleChange}
+                        required
                       />
                     </div>
                     <div className="span-2 sm:col-span-3">
@@ -164,8 +304,9 @@ const AddSkill = () => {
                         name="description"
                         id="description"
                         className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Green"
-                        required=""
+                        placeholder="Insert Description"
+                        onChange={handleChange}
+                        required
                       />
                     </div>
                     <div className="span-2 sm:col-span-3">
@@ -180,7 +321,31 @@ const AddSkill = () => {
                           className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                           id="file_input"
                           type="file"
+                          name="image"
+                          onChange={HANDLECHANGEFIREBASE}
                         />
+                        {!imgUrl && (
+                          <div className="flex flex-wrap w-max-[200px]">
+                            <div
+                              className="text-base font-medium text-primary"
+                              style={{ width: `${progresspercent}%` }}
+                            >
+                              {progresspercent}%
+                            </div>
+                          </div>
+                        )}
+                        {imgUrl && (
+                          <div className="flex flex-wrap w-max-[200] justify-center mt-3">
+                            <img
+                              src={imgUrl}
+                              alt="uploaded file"
+                              height={200}
+                              width={200}
+                            />
+                          </div>
+                        )}
+
+                        {console.log(imgUrl)}
                       </>
                     </div>
                   </div>
@@ -192,7 +357,7 @@ const AddSkill = () => {
                     type="submit"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
-                    Add Skill
+                    Add Portfolio
                   </button>
                 </div>
               </form>

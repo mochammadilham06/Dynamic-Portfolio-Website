@@ -57,32 +57,6 @@ export const UpdatePortfolio = gql`
   }
 `;
 
-export const UpdatePortfolio2 = gql`
-  mutation UpdatePortfolio(
-    $id: uuid
-    $description: String = ""
-    $title: String = ""
-  ) {
-    update_myportfolio_portfolio(
-      where: { id: { _eq: $id } }
-      _set: { title: $title, description: $description }
-    ) {
-      returning {
-        id
-        title
-        image
-        description
-        created_at
-        updated_at
-        user_portfolio {
-          first_name
-          last_name
-        }
-      }
-    }
-  }
-`;
-
 export const createSkills = gql`
   mutation CreateSkills($objects: [myportfolio_skills_insert_input!] = {}) {
     insert_myportfolio_skills(objects: $objects) {
@@ -117,13 +91,14 @@ export const deleteSkill = gql`
 
 export const updateSkill = gql`
   mutation UpdateSkills(
-    $id: uuid
+    $id: uuid = ""
+    $image: String = ""
     $title: String = ""
     $description: String = ""
   ) {
     update_myportfolio_skills(
       where: { id: { _eq: $id } }
-      _set: { title: $title, description: $description }
+      _set: { title: $title, image: $image, description: $description }
     ) {
       returning {
         id
