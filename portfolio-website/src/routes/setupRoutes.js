@@ -7,7 +7,13 @@ import LoginPage from "../modules/Login";
 import NotFound from "../modules/NotFound";
 import Portfolio from "../modules/Portfolio";
 import SkillPage from "../modules/Skills";
-import { Layout, AddSkill, SignUp } from "../components";
+import {
+  Layout,
+  AddSkill,
+  SignUp,
+  DetailSkill,
+  DetailPortfolio,
+} from "../components";
 import { AuthContextProvider } from "../utils/helper";
 import ProtectedRoutes from "./protectedRoutes";
 
@@ -17,7 +23,9 @@ const SetupRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="Portfolio" element={<Portfolio />} />
+        <Route path="Portfolio/:id" element={<DetailPortfolio />} />
         <Route path="skills" element={<SkillPage />} />
+        <Route path="skills/:id" element={<DetailSkill />} />
         <Route path="/secret-login" element={<LoginPage />} />
         <Route path="/secret-signup" element={<SignUp />} />
 

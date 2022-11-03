@@ -1,4 +1,7 @@
 import { customSvg } from "./svgs";
-import Loading from "./svgs/loading.gif";
 
-export { Loading };
+import PortfolioImage from "./images/portfolio.png";
+import SkillsImage from "./images/skills.png";
+import WelcomeImage from "./images/welcome.jpg";
+
+export { PortfolioImage, SkillsImage, WelcomeImage };

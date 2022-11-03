@@ -1,6 +1,6 @@
 import React from "react";
 import CONST from "../../utils/constants";
-
+import { Link } from "react-router-dom";
 const Skills = () => {
   console.log(CONST);
   return (
@@ -27,24 +27,25 @@ const Skills = () => {
                 />
                 <div className="py-8 px-6">
                   <h3>
-                    <a
-                      href="#"
-                      className="block mb-3 font-bold text-base text-dark hover:text-primary truncate"
+                    <Link
+                      to={"/skills"}
+                      className="block mb-3 font-bold text-base text-dark
+                    hover:text-primary truncate"
                     >
                       Belajar programming
-                    </a>
+                    </Link>
                   </h3>
                   <p className="font-normal text-primary text-base mb-6 truncate">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolores, aliquam.
                   </p>
                   <p className="text-center">
-                    <a
-                      href="#"
+                    <Link
+                      to={"/skills"}
                       className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
                     >
                       Lets Journey
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>
@@ -58,25 +59,25 @@ const Skills = () => {
                 />
                 <div className="py-8 px-6">
                   <h3>
-                    <a
-                      href="#"
-                      className="block mb-3 font-bold text-base text-dark hover:text-primary truncate"
+                    <Link
+                      to={"/skills"}
+                      className="block mb-3 font-bold text-base text-dark
+                    hover:text-primary truncate"
                     >
                       Belajar programming
-                    </a>
+                    </Link>
                   </h3>
                   <p className="font-normal text-primary text-base mb-6 truncate">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Dolores, aliquam Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. Dolores, aliquamLorem ipsum dolor sit
+                    Dolores, aliquam.
                   </p>
                   <p className="text-center">
-                    <a
-                      href="#"
+                    <Link
+                      to={"/skills"}
                       className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
                     >
                       Lets Journey
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>
@@ -90,24 +91,25 @@ const Skills = () => {
                 />
                 <div className="py-8 px-6">
                   <h3>
-                    <a
-                      href="#"
-                      className="block mb-3 font-bold text-base text-dark hover:text-primary truncate"
+                    <Link
+                      to={"/skills"}
+                      className="block mb-3 font-bold text-base text-dark
+                    hover:text-primary truncate"
                     >
                       Belajar programming
-                    </a>
+                    </Link>
                   </h3>
                   <p className="font-normal text-primary text-base mb-6 truncate">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolores, aliquam.
                   </p>
                   <p className="text-center">
-                    <a
-                      href="#"
+                    <Link
+                      to={"/skills"}
                       className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
                     >
                       Lets Journey
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>

@@ -12,11 +12,11 @@ const NavComponent = ({ setActive }) => {
   return (
     <nav className="bg-primary border-gray-200 px-2 sm:px-4 lg:px-36 py-2.5 dark:bg-gray-900">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="#" className="flex items-center">
+        <Link to={"/secret-login"} className="flex items-center">
           <h1 className="self-center text-2xl font-extrabold tracking-wide whitespace-nowrap text-white">
             <span className="text-secondary">PORT</span>FOLIO
           </h1>
-        </a>
+        </Link>
         <button
           onClick={() => setToggle(!toggle)}
           type="button"
