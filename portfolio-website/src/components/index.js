@@ -12,6 +12,8 @@ import DashboardSidebar from "./Sidebar";
 import Layout from "./Sidebar/layout";
 import AddSkill from "./Skills/addSkill";
 import SignUp from "./SignUp";
+import DetailSkill from "./Skills/skill-detail";
+import DetailPortfolio from "./Portfolio/portfolio-detail";
 
 export {
   NavComponent,
@@ -28,4 +30,6 @@ export {
   Layout,
   AddSkill,
   SignUp,
+  DetailSkill,
+  DetailPortfolio,
 };

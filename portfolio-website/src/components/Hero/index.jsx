@@ -18,7 +18,7 @@ const Hero = ({ title1, title2 }) => {
             </h1>
             <a
               className="px-5 py-2 text-xl tracking-wider font-bold text-white bg-third rounded-full hover:bg-white hover:text-third transition duration-300 ease-in-out"
-              href="#"
+              href="#about"
             >
               Lets Journey
             </a>

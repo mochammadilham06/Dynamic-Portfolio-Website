@@ -111,7 +111,10 @@ const Layout = () => {
 
             <div className="flex space-x-4 items-center">
               <div>
-                <a href="#" className="text-primary">
+                <a
+                  href="https://github.com/mochammadilham06/"
+                  className="text-primary"
+                >
                   {user && user.email}
                 </a>
               </div>

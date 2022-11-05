@@ -1,10 +1,10 @@
 import { gql } from "@apollo/client";
 
 export const createPortfolio = gql`
-  mutation createPortfolio(
+  mutation CreatePortfolio(
     $objects: [myportfolio_portfolio_insert_input!] = {}
   ) {
-    Portfolio_insert: insert_myportfolio_portfolio(objects: $objects) {
+    insert_myportfolio_portfolio(objects: $objects) {
       returning {
         id
         title
@@ -12,16 +12,28 @@ export const createPortfolio = gql`
         description
         created_at
         updated_at
-        user_id
+        user_portfolio {
+          first_name
+          last_name
+        }
       }
     }
   }
 `;
 
 export const deletePortfolio = gql`
-  mutation deletePortfolio($id: uuid = "") {
-    Portfolio_delete: delete_myportfolio_portfolio_by_pk(id: $id) {
+  mutation DeletePortfolio($id: uuid = "") {
+    delete_myportfolio_portfolio_by_pk(id: $id) {
       id
+      title
+      image
+      description
+      created_at
+      updated_at
+      user_portfolio {
+        first_name
+        last_name
+      }
     }
   }
 `;
@@ -46,7 +58,7 @@ export const UpdatePortfolio = gql`
 `;
 
 export const createSkills = gql`
-  mutation createSkills($objects: [myportfolio_skills_insert_input!] = {}) {
+  mutation CreateSkills($objects: [myportfolio_skills_insert_input!] = {}) {
     insert_myportfolio_skills(objects: $objects) {
       returning {
         id
@@ -55,35 +67,47 @@ export const createSkills = gql`
         description
         created_at
         updated_at
-        user_id
+        user {
+          first_name
+          last_name
+        }
       }
     }
   }
 `;
 
 export const deleteSkill = gql`
-  mutation deleteSkill($id: uuid = "") {
+  mutation DeleteSkill($id: uuid = "") {
     delete_myportfolio_skills_by_pk(id: $id) {
       id
+      title
+      image
+      description
+      created_at
+      updated_at
     }
   }
 `;
 
 export const updateSkill = gql`
-  mutation updateSkill(
+  mutation UpdateSkills(
     $id: uuid = ""
-    $description: String = ""
     $image: String = ""
     $title: String = ""
+    $description: String = ""
   ) {
-    update_myportfolio_skills_by_pk(
-      pk_columns: { id: $id }
+    update_myportfolio_skills(
+      where: { id: { _eq: $id } }
       _set: { title: $title, image: $image, description: $description }
     ) {
-      id
-      title
-      image
-      description
+      returning {
+        id
+        title
+        image
+        description
+        created_at
+        updated_at
+      }
     }
   }
 `;

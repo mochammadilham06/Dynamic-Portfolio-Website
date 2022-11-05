@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LoadingSvg from "../../assets/svgs";
 import UseNewestSubscriptionSkills from "../../configs/Hooks/Operation/subscriptionNewestSkills";
 import UseSubscriptionSkills from "../../configs/Hooks/Operation/subscriptionQuerys";
@@ -39,23 +40,23 @@ const SkillDetail = () => {
                   <img src={items.image} alt="programming" className="w-full" />
                   <div className="py-8 px-6">
                     <h3>
-                      <a
-                        href="#"
+                      <Link
+                        to={`/skills/${items.id}`}
                         className="block mb-3 font-bold text-base text-dark hover:text-primary truncate"
                       >
                         {items.title}
-                      </a>
+                      </Link>
                     </h3>
                     <p className="font-normal text-primary text-base mb-6 truncate">
                       {items.description}
                     </p>
                     <p className="text-center">
-                      <a
-                        href="#"
+                      <Link
+                        to={`/skills/${items.id}`}
                         className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
                       >
                         Lets Journey
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
