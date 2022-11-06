@@ -16,12 +16,14 @@ const Hero = ({ title1, title2 }) => {
               <span className="text-secondary">{`${title1} `}</span>
               {title2}
             </h1>
-            <a
-              className="px-5 py-2 text-xl tracking-wider font-bold text-white bg-third rounded-full hover:bg-white hover:text-third transition duration-300 ease-in-out"
-              href="#about"
-            >
-              Lets Journey
-            </a>
+            <div>
+              <a
+                className="px-5 py-2 text-xl tracking-wider font-bold text-white bg-third rounded-full hover:bg-white hover:text-third transition duration-300 ease-in-out"
+                href="#about"
+              >
+                Lets Journey
+              </a>
+            </div>
           </div>
 
           <div className="w-full self-end px-4 lg:w-1/2">
