@@ -22,8 +22,9 @@ const FooterWhite = () => {
               <ul className="grid gap-3 grid-cols-1 text-primary ">
                 <li className="flex flex-row items-center">
                   <a
-                    href="#"
+                    href="https://wa.me/085157022076?"
                     target="_blank"
+                    rel="noreferrer"
                     className="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-secondary hover:bg-primary hover:text-secondary"
                   >
                     <svg
@@ -41,8 +42,9 @@ const FooterWhite = () => {
                 </li>
                 <li className="flex flex-row items-center">
                   <a
-                    href="#"
+                    href="https://www.instagram.com/moch.ilham10/"
                     target="_blank"
+                    rel="noreferrer"
                     className="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-secondary hover:bg-primary hover:text-secondary"
                   >
                     <svg
@@ -60,8 +62,9 @@ const FooterWhite = () => {
                 </li>
                 <li className="flex flex-row items-center">
                   <a
-                    href="#"
+                    href="https://web.facebook.com/hylo.fedor/"
                     target="_blank"
+                    rel="noreferrer"
                     className="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-secondary hover:bg-primary hover:text-secondary"
                   >
                     <svg
@@ -90,7 +93,12 @@ const FooterWhite = () => {
           <div className="w-full pt-10">
             <p className="font-medium text-xs text-slate-500 text-center tracking-wider">
               ©Copyright 2022.
-              <a href="#" className="hover:text-secondary font-bold text-third">
+              <a
+                href="https://www.linkedin.com/in/mochilham1006"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-secondary font-bold text-third"
+              >
                 Mochammad Ilham Maulana.
               </a>
               All right reserved
