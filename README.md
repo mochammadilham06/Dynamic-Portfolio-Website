@@ -1,6 +1,6 @@
 # Dynamic portfolio website
 
-### `Introdction`
+### `Introduction`
 
 This Portfolio Website Project was created as a material for applying the knowledge I have learned, besides that this website was created as a preparation for me to enter the world of work someday. This website is built with `Javascript`, `ReactJS`, `Tailwind CSS`, `GraphQL`, `Apollo Client`, and several `libraries`
 
