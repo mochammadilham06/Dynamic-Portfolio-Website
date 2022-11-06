@@ -10,7 +10,7 @@ This Portfolio Website Project was created as a material for applying the knowle
 2. On your command, type cd Dynamic-Portfolio-Website/portfolio-website/
 3. type `code .`
 4. On your Code editor, open terminal and then type `npm install`
-5. Run the project by typing `npm run`
+5. Run the project by typing `npm start`
 6. Happy Testing
 
 ### Output Of this Project
