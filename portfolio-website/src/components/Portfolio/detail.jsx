@@ -34,35 +34,41 @@ const PortfolioDetail = () => {
 
           <div className="flex flex-wrap">
             {newesPortfolio.myportfolio_portfolio.map((items) => (
-              <div className="w-full px-4 lg:w-1/2" key={items.id}>
-                <div className="bg-white rounded-xl shadow-dark overflow-hidden mb-10">
-                  <img src={items.image} alt="programming" className="w-full" />
+              <Link
+                to={`/portfolio/${items.id}`}
+                className="w-full px-4 lg:w-1/2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-105  duration-300"
+                key={items.id}
+              >
+                <div className="bg-white rounded-xl shadow-dark overflow-hidden mb-10 hover:translate-y-0 hover:scale-100;">
+                  <img
+                    src={items.image}
+                    alt="programming"
+                    className="w-full"
+                    width={360}
+                    height={200}
+                  />
                   <div className="py-8 px-6">
-                    <h3>
-                      <Link
-                        to={`/portfolio/${items.id}`}
-                        className="block mb-3 font-bold text-base text-dark hover:text-primary truncate"
-                      >
-                        {items.title}
-                      </Link>
+                    <h3 className="block mb-3 font-bold text-base text-dark hover:text-primary truncate">
+                      {items.title}
                     </h3>
                     <p className="font-normal text-primary text-base mb-6 truncate">
                       {items.description}
                     </p>
-                    <p
-                      className="text-center uppercase font-bold tracking-wider text-sm
-                  text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
+
+                    <div
+                      className="uppercase font-bold tracking-wider text-sm
+                    text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
                     >
-                      <Link
-                        to={`/portfolio/${items.id}`}
-                        className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
+                      <p
+                        className="text-center uppercase font-bold tracking-wider text-sm
+                  text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
                       >
                         Lets Journey
-                      </Link>
-                    </p>
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -83,32 +89,28 @@ const PortfolioDetail = () => {
 
           <div className="flex flex-wrap">
             {data.myportfolio_portfolio.map((items) => (
-              <div className="w-full px-4 lg:w-1/2" key={items.id}>
+              <Link
+                to={`/portfolio/${items.id}`}
+                className="w-full px-4 lg:w-1/3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-105  duration-300"
+                key={items.id}
+              >
                 <div className="bg-white rounded-xl shadow-light overflow-hidden mb-10">
                   <img src={items.image} alt="programming" className="w-full" />
                   <div className="py-8 px-6">
-                    <h3>
-                      <Link
-                        to={`/portfolio/${items.id}`}
-                        className="block mb-3 font-bold text-base text-dark hover:text-primary truncate"
-                      >
-                        {items.title}
-                      </Link>
+                    <h3 className="block mb-3 font-bold text-base text-dark hover:text-primary truncate">
+                      {items.title}
                     </h3>
                     <p className="font-normal text-primary text-base mb-6 truncate">
                       {items.description}
                     </p>
-                    <p className="text-center">
-                      <Link
-                        to={`/portfolio/${items.id}`}
-                        className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
-                      >
+                    <div className="flex items-center justify-center">
+                      <p className="text-center uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80">
                         Lets Journey
-                      </Link>
-                    </p>
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

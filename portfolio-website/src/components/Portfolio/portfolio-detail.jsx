@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import LoadingSvg from "../../assets/svgs";
 import { getPortfolio } from "../../configs/GraphQL/Query";
 import Footer from "../Footer";
+import { MyAvatar } from "../../assets";
 const DetailPortfolio = () => {
   const params = useParams();
   const setId = params.id;
@@ -20,7 +21,7 @@ const DetailPortfolio = () => {
         <Link to={"/portfolio"}>
           <button
             type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-third hover:bg-green-200 focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,37 +41,45 @@ const DetailPortfolio = () => {
         </Link>
       </div>
 
-      <div className="px-2 md:px-6 my-3 w-full text-slate-700 dark:text-white flex flex-col items-center">
-        <div className="max-w-xl text-left flex flex-col w-full items-center justify-center md:p-4 md:border shadow-dark border-slate-300 dark:border-slate-600 rounded-xl">
-          <div className="w-full rounded-xl flex-col xl:flex-row bg-white dark:bg-slate-900 shadow-md">
-            <div
-              className="rounded-t-xl w-full h-64 shadow-sm bg-cover"
-              style={{
-                backgroundImage:
-                  'url("https://apod.nasa.gov/apod/image/2208/Cartwheel_Webb_960.jpg")',
-              }}
+      <section className="bg-white dark:bg-gray-900">
+        <div className="container px-6 py-10 mx-auto">
+          <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
+            {data?.myportfolio_portfolio_by_pk.title}
+          </h1>
+          <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
+            <img
+              className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
+              src={data?.myportfolio_portfolio_by_pk.image}
+              alt="testImage"
             />
-            <div className="w-full p-3 flex flex-col justify-between h-auto overflow-auto lg:h-auto">
-              <h1 className="text-left text-sm md:text-lg font-bold leading-normal">
+            <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6">
+              <a
+                href="#"
+                className="block mt-4 text-2xl font-semibold text-gray-800 hover:underline dark:text-white md:text-3xl"
+              >
                 {data?.myportfolio_portfolio_by_pk.title}
-              </h1>
-              <p className="text-sm">
-                {data?.myportfolio_portfolio_by_pk.description}.
+              </a>
+              <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                {data?.myportfolio_portfolio_by_pk.description}
               </p>
-              <div className="flex mt-4">
-                <div className="flex flex-col ml-4 w-full">
-                  <h2 className="text-center text-xs mt-1 mb-2 text-blue-600 dark:text-blue-400 font-bold uppercase">
-                    CREATED AT
-                  </h2>
-                  <span className="self-center text-xs text-blue-700 dark:text-blue-300 -mt-2">
-                    {data?.myportfolio_portfolio_by_pk.created_at}
-                  </span>
+
+              <div className="flex items-center mt-6">
+                <img
+                  className="object-cover object-center w-10 h-10 rounded-full"
+                  src={MyAvatar}
+                  alt="My Avatar"
+                />
+                <div className="mx-4">
+                  <h1 className="text-sm text-gray-700 dark:text-gray-200">
+                    {`${data?.myportfolio_portfolio_by_pk.user_portfolio.first_name} 
+                    ${data?.myportfolio_portfolio_by_pk.user_portfolio.last_name}`}
+                  </h1>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <Footer />
     </>
   );
