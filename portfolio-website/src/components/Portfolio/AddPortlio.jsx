@@ -1,5 +1,6 @@
 import React from "react";
 import LoadingSvg from "../../assets/svgs";
+import { Helmet } from "react-helmet";
 import { storage } from "../../configs/Firebase/firebase-config";
 import {
   deleteObject,
@@ -162,6 +163,11 @@ const AddPortlio = () => {
   };
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Dashboard-Portfolios</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="flex flex-row-reverse mb-5">
         <button
           onClick={handleModal}

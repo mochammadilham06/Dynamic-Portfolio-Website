@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import UseSubscriptionSkills from "../../configs/Hooks/Operation/subscriptionQuerys";
+import { Helmet } from "react-helmet";
 import LoadingSvg from "../../assets/svgs";
 import ModalUpdateSkills from "./modalUpdateSkills";
 import { storage } from "../../configs/Firebase/firebase-config";
@@ -166,6 +167,11 @@ const AddSkill = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Dashboard-Skills</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="flex flex-row-reverse mb-5">
         <button
           onClick={handleModal}
