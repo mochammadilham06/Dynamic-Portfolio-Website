@@ -24,40 +24,36 @@ const Portfolio = () => {
           </div>
 
           <div className="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
-            <div className="relative mb-14 p-4 md:w-1/2">
+            <Link
+              to={"/portfolio"}
+              className="relative mb-14 p-4 md:w-1/2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
+            >
               <div className="rounded-md shadow-dark overflow-hidden">
-                <Link to={"/portfolio"}>
-                  <img src={Project1} alt="gambar" className="w-full blur-sm" />
-                </Link>
-                <div className="absolute top-[48%] left-[32%] text-white scale-150 lg:left-[37%]">
-                  <Link
-                    to={"/portfolio"}
-                    className="uppercase font-bold tracking-wider text-sm
-                  text-white bg-third py-2 px-5 rounded-full hover:bg-white
+                <img src={Project1} alt="gambar" className="w-full blur-sm" />
+                <div
+                  className="absolute top-[48%] left-[32%] text-white scale-150 sm:left-[40%] sm:top-[50%] md:left-[30%] md:top-[42%] lg:left-[38%] lg:top-[48%] uppercase font-bold tracking-wider text-sm
+                   bg-third py-2 px-5 rounded-full hover:bg-white
                   hover:text-third"
-                  >
-                    Lets Journey
-                  </Link>
+                >
+                  Lets Journey
                 </div>
               </div>
-            </div>
-            <div className="relative mb-14 p-4 md:w-1/2">
+            </Link>
+            <Link
+              to={"portfolio"}
+              className="relative mb-14 p-4 md:w-1/2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300"
+            >
               <div className="rounded-md shadow-dark overflow-hidden">
-                <Link to={"/portfolio"}>
-                  <img src={Project2} alt="gambar" className="w-full blur-sm" />
-                </Link>
-                <div className="absolute top-[48%] left-[32%] text-white scale-150 lg:left-[37%]">
-                  <Link
-                    to={"/portfolio"}
-                    className="uppercase font-bold tracking-wider text-sm
-                  text-white bg-third py-2 px-5 rounded-full hover:bg-white
+                <img src={Project2} alt="gambar" className="w-full blur-sm" />
+                <div
+                  className="absolute top-[40%] left-[32%] text-white scale-150 sm:left-[38%] sm:top-[44%] md:left-[30%] md:top-[30%] lg:left-[37%] lg:top-[32%]   uppercase font-bold tracking-wider text-sm
+                   bg-third py-2 px-5 rounded-full hover:bg-white
                   hover:text-third"
-                  >
-                    Lets Journey
-                  </Link>
+                >
+                  Lets Journey
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

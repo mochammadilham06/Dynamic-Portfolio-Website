@@ -35,32 +35,26 @@ const SkillDetail = () => {
 
           <div className="flex flex-wrap">
             {newesSkill.myportfolio_skills.map((items) => (
-              <div className="w-full px-4 lg:w-1/2" key={items.id}>
+              <Link
+                to={`/skills/${items.id}`}
+                className="w-full px-4 lg:w-1/2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105  duration-300"
+                key={items.id}
+              >
                 <div className="bg-white rounded-xl shadow-dark overflow-hidden mb-10">
                   <img src={items.image} alt="programming" className="w-full" />
                   <div className="py-8 px-6">
-                    <h3>
-                      <Link
-                        to={`/skills/${items.id}`}
-                        className="block mb-3 font-bold text-base text-dark hover:text-primary truncate"
-                      >
-                        {items.title}
-                      </Link>
+                    <h3 className="block mb-3 font-bold text-base text-dark hover:text-primary truncate">
+                      {items.title}
                     </h3>
                     <p className="font-normal text-primary text-base mb-6 truncate">
                       {items.description}
                     </p>
-                    <p className="text-center">
-                      <Link
-                        to={`/skills/${items.id}`}
-                        className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
-                      >
-                        Lets Journey
-                      </Link>
+                    <p className="text-center uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80">
+                      Lets Journey
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -81,32 +75,39 @@ const SkillDetail = () => {
 
           <div className="flex flex-wrap">
             {skillSubscription.myportfolio_skills.map((items) => (
-              <div className="w-full px-4 lg:w-1/2" key={items.id}>
-                <div className="bg-white rounded-xl shadow-dark overflow-hidden mb-10">
-                  <img src={items.image} alt="programming" className="w-full" />
-                  <div className="py-8 px-6">
-                    <h3>
-                      <a
-                        href="#"
-                        className="block mb-3 font-bold text-base text-dark hover:text-primary truncate"
-                      >
-                        {items.title}
-                      </a>
-                    </h3>
-                    <p className="font-normal text-primary text-base mb-6 truncate">
-                      {items.description}
-                    </p>
-                    <p className="text-center">
-                      <a
-                        href="#"
-                        className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
-                      >
-                        Lets Journey
-                      </a>
-                    </p>
+              <Link
+                to={`/skills/${items.id}`}
+                className="w-full px-4 md:w-1/2 lg:w-1/4  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-105  duration-300"
+                key={items.id}
+              >
+                <div>
+                  <div className="bg-white rounded-xl shadow-dark overflow-hidden mb-10">
+                    <img
+                      src={items.image}
+                      alt="programming"
+                      className="w-full"
+                    />
+                    <div className="py-8 px-6">
+                      <div>
+                        <h3 className="block mb-3 font-bold text-base text-dark hover:text-primary truncate">
+                          {items.title}
+                        </h3>
+                      </div>
+                      <p className="font-normal text-primary text-base mb-6 truncate">
+                        {items.description}
+                      </p>
+                      <div className="text-center">
+                        <h4
+                          href="#"
+                          className="uppercase font-bold tracking-wider text-sm text-white bg-third py-2 px-5 rounded-full hover:opacity-80"
+                        >
+                          Lets Journey
+                        </h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

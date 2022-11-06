@@ -21,7 +21,7 @@ module.exports = {
         montserrat: ["montserrat"],
       },
       boxShadow: {
-        light: "12px 9px 16px rgba(255, 255, 255, 0.34);",
+        light: "-1px 5px 16px 7px rgba(255, 255, 255, 0.34);",
         dark: "4px 8px 25px 6px rgba(0, 0, 0, 0.25);",
       },
     },

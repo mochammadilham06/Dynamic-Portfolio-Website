@@ -38,3 +38,20 @@ export const getSkills = gql`
     }
   }
 `;
+
+export const getSkillsById = gql`
+  query getSkillsById($id: uuid = "") {
+    myportfolio_skills_by_pk(id: $id) {
+      id
+      title
+      image
+      description
+      created_at
+      updated_at
+      user {
+        first_name
+        last_name
+      }
+    }
+  }
+`;

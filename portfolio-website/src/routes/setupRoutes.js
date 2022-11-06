@@ -16,6 +16,7 @@ import {
 } from "../components";
 import { AuthContextProvider } from "../utils/helper";
 import ProtectedRoutes from "./protectedRoutes";
+import PrivateRoutes from "./privateRoutes";
 
 const SetupRoutes = () => {
   return (
@@ -26,8 +27,10 @@ const SetupRoutes = () => {
         <Route path="Portfolio/:id" element={<DetailPortfolio />} />
         <Route path="skills" element={<SkillPage />} />
         <Route path="skills/:id" element={<DetailSkill />} />
-        <Route path="/secret-login" element={<LoginPage />} />
-        <Route path="/secret-signup" element={<SignUp />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/secret-login" element={<LoginPage />} />
+          <Route path="/secret-signup" element={<SignUp />} />
+        </Route>
 
         <Route
           path="/dashboard-admin/"

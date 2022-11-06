@@ -1,11 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { PortfolioImage, SkillsImage, WelcomeImage } from "../../assets/";
 
 const DashboardSidebar = ({ countPortfolio, countSkill }) => {
   return (
     <div>
-      <div class="flex flex-row justify-center gap-3">
+      <div className="flex flex-row justify-center gap-3">
         <div>
           <a
             href="#"

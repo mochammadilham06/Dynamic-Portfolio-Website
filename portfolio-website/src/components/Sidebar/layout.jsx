@@ -3,11 +3,12 @@ import { useNavigate, NavLink, Outlet } from "react-router-dom";
 
 import { UserAuth } from "../../utils/helper";
 import Swal from "sweetalert2";
+import { MyAvatar } from "../../assets";
 let activeClassName =
-  "relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400";
+  "relative px-4 py-3 flex items-center space-x-4 rounded-xl font-bold text-white bg-gradient-to-r from-sky-600 to-cyan-400";
 
 let notActive =
-  "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group";
+  "px-4 py-3 flex items-center text-white font-medium space-x-4 rounded-md ";
 
 const Layout = () => {
   const { user, logout } = UserAuth();
@@ -38,13 +39,6 @@ const Layout = () => {
         }
       }
     });
-    //   try {
-    //      logout();
-    //     navigate("/secret-login");
-    //     alert(`${user && user.email} has been logout`);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
   };
   return (
     <>
@@ -92,7 +86,7 @@ const Layout = () => {
             <button
               onClick={HANDLELOGOUT}
               type="button"
-              class="text-white w-full bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              className="text-white w-full bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             >
               LOGOUT
             </button>
@@ -106,7 +100,7 @@ const Layout = () => {
               hidden=""
               className="text-2xl text-gray-600 font-medium lg:block"
             >
-              {"name here"}
+              Mochammad Ilham Maulana
             </h5>
 
             <div className="flex space-x-4 items-center">
@@ -120,8 +114,8 @@ const Layout = () => {
               </div>
 
               <img
-                class="w-10 h-10 rounded-full"
-                src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1015.jpg"
+                className="w-10 h-10 rounded-full"
+                src={MyAvatar}
                 alt="Rounded avatar"
               ></img>
             </div>

@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-let activeStyle = {
-  textDecoration: "underline",
-};
-
-let activeClassName = "underline";
-
 const NavComponent = ({ setActive }) => {
   const [toggle, setToggle] = useState(false);
   return (
@@ -50,7 +44,7 @@ const NavComponent = ({ setActive }) => {
                     setActive === "home"
                       ? "text-secondary bg-primary md:text-secondary lg:text-secondary xl:text-secondary"
                       : "text-primary md:text-white "
-                  } block py-2 pr-4 pl-3 md:border-0 md:p-0 hover:text-secondary hover:bg-primary`}
+                  } block py-2 pr-4 pl-3 md:border-0 md:p-0 hover:text-secondary hover:bg-primary text-lg`}
                   aria-current="page"
                 >
                   Home
@@ -58,11 +52,12 @@ const NavComponent = ({ setActive }) => {
               </NavLink>
             </li>
             <li>
-              <Link>
-                <p className="block py-2 pr-4 pl-3 text-primary rounded hover:bg-primary hover:text-secondary md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:text-white">
-                  About Me
-                </p>
-              </Link>
+              <a
+                href="#about"
+                className="py-2 pr-4 pl-3 text-primary rounded hover:bg-primary text-base hover:text-secondary md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:text-white"
+              >
+                About Me
+              </a>
             </li>
             <li>
               <Link to={"/skills"}>
@@ -71,7 +66,7 @@ const NavComponent = ({ setActive }) => {
                     setActive === "skills"
                       ? "text-secondary bg-primary md:text-secondary lg:text-secondary xl:text-secondary"
                       : "text-primary md:text-white"
-                  } block py-2 pr-4 pl-3 md:border-0 md:p-0 hover:text-secondary hover:bg-primary`}
+                  } block py-2 pr-4 pl-3 md:border-0 md:p-0 hover:text-secondary hover:bg-primary text-lg`}
                 >
                   Skill
                 </p>
@@ -84,7 +79,7 @@ const NavComponent = ({ setActive }) => {
                     setActive === "portfolio"
                       ? "text-secondary bg-primary md:text-secondary lg:text-secondary xl:text-secondary"
                       : "text-primary md:text-white"
-                  } block py-2 pr-4 pl-3 md:border-0 md:p-0 hover:text-secondary hover:bg-primary `}
+                  } block py-2 pr-4 pl-3 md:border-0 md:p-0 hover:text-secondary hover:bg-primary text-lg `}
                 >
                   Portfolio
                 </p>
