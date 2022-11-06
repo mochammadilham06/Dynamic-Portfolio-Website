@@ -13,28 +13,18 @@ const Login = () => {
 
   const HANDLESUBMIT = async (e) => {
     e.preventDefault();
-    setError("");
     try {
       let timerInterval;
       Swal.fire({
-        title: "Checking......",
-        timer: 2000,
+        title: "Checking",
+        timer: 1000,
         timerProgressBar: true,
         didOpen: () => {
           Swal.showLoading();
-          const b = Swal.getHtmlContainer().querySelector("b");
-          timerInterval = setInterval(() => {
-            b.textContent = Swal.getTimerLeft();
-          }, 100);
         },
         willClose: () => {
           clearInterval(timerInterval);
         },
-      }).then((result) => {
-        /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-          console.log("I was closed by the timer");
-        }
       });
       await signIn(email, password);
       Swal.fire("Success", "You Have been directed to Dashboard!", "success");
