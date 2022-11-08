@@ -10,13 +10,25 @@ const Portfolio = () => {
         <div className="container">
           <div className="w-full px-4">
             <div className="max-w-xl mx-auto text-center mb-16">
-              <h4 className="uppercase font-bold text-xl text-third mb-2 lg:text-3xl">
+              <h4
+                className="uppercase font-bold text-xl text-third mb-2 lg:text-3xl"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
                 Portfolio
               </h4>
-              <h2 className="font-bold text-primary text-xl mb-2 sm:text-4xl lg:text-3xl">
+              <h2
+                className="font-bold text-primary text-xl mb-2 sm:text-4xl lg:text-3xl"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
                 THIS IS A PROJECT WHAT I HAVE DONE
               </h2>
-              <p className="font-medium text-md text-slate-600 md:text-lg">
+              <p
+                className="font-medium text-md text-slate-600 md:text-lg"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
                 Here is a simple view to see the part of the project that I have
                 completed, press let's journey to see more details
               </p>
@@ -27,6 +39,7 @@ const Portfolio = () => {
             <Link
               to={"/portfolio"}
               className="relative mb-14 p-4 md:w-1/2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
+              data-aos="fade-up-right"
             >
               <div className="rounded-md shadow-dark overflow-hidden">
                 <img src={Project1} alt="gambar" className="w-full blur-sm" />
@@ -42,6 +55,7 @@ const Portfolio = () => {
             <Link
               to={"portfolio"}
               className="relative mb-14 p-4 md:w-1/2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300"
+              data-aos="fade-up-left"
             >
               <div className="rounded-md shadow-dark overflow-hidden">
                 <img src={Project2} alt="gambar" className="w-full blur-sm" />

@@ -23,7 +23,10 @@ const SkillDetail = () => {
       <div className="pt-11 pb-11 bg-fifth">
         <div className="container">
           <div className="w-full px-4">
-            <div className="max-w-xl mx-auto text-center mb-16">
+            <div
+              className="max-w-xl mx-auto text-center mb-16"
+              data-aos="zoom-in"
+            >
               <h4 className="uppercase font-bold text-xl text-third mb-2 lg:text-3xl">
                 SKILL
               </h4>
@@ -63,7 +66,10 @@ const SkillDetail = () => {
       <div className="pt-11 pb-11 bg-primary">
         <div className="container">
           <div className="w-full px-4">
-            <div className="max-w-xl mx-auto text-center mb-16">
+            <div
+              className="max-w-xl mx-auto text-center mb-16"
+              data-aos="zoom-in"
+            >
               <h4 className="uppercase font-bold text-xl text-third mb-2 lg:text-3xl">
                 SKILL
               </h4>

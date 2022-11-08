@@ -23,10 +23,16 @@ const PortfolioDetail = () => {
         <div className="container">
           <div className="w-full px-4">
             <div className="max-w-xl mx-auto text-center mb-16">
-              <h4 className="uppercase font-bold text-xl text-third mb-2 lg:text-3xl">
+              <h4
+                className="uppercase font-bold text-xl text-third mb-2 lg:text-3xl"
+                data-aos="zoom-in"
+              >
                 PORTFOLIO
               </h4>
-              <h2 className="font-bold text-primary text-xl mb-4 sm:text-4xl lg:text-3xl">
+              <h2
+                className="font-bold text-primary text-xl mb-4 sm:text-4xl lg:text-3xl"
+                data-aos="zoom-in"
+              >
                 LATEST PROJECT I HAVE DONE
               </h2>
             </div>
@@ -78,10 +84,16 @@ const PortfolioDetail = () => {
         <div className="container">
           <div className="w-full px-4">
             <div className="max-w-xl mx-auto text-center mb-16">
-              <h4 className="uppercase font-bold text-xl text-third mb-2 lg:text-3xl">
+              <h4
+                className="uppercase font-bold text-xl text-third mb-2 lg:text-3xl"
+                data-aos="zoom-in"
+              >
                 PORTFOLIO
               </h4>
-              <h2 className="font-bold text-white text-xl mb-4 sm:text-4xl lg:text-3xl">
+              <h2
+                className="font-bold text-white text-xl mb-4 sm:text-4xl lg:text-3xl"
+                data-aos="zoom-in"
+              >
                 <span>ANOTHER</span> PROJECT
               </h2>
             </div>

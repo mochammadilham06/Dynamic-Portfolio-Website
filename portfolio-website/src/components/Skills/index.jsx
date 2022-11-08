@@ -10,10 +10,18 @@ const Skills = () => {
         <div className="container">
           <div className="w-full px-4">
             <div className="max-w-xl mx-auto text-center mb-16">
-              <h4 className="font-bold text-xl text-secondary mb-2 lg:text-3xl">
+              <h4
+                className="font-bold text-xl text-secondary mb-2 lg:text-3xl"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
                 SKILL
               </h4>
-              <h2 className="uppercase font-semibold text-white text-xl mb-4 lg:text-3xl md:font-bold">
+              <h2
+                className="uppercase font-semibold text-white text-xl mb-4 lg:text-3xl md:font-bold"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >
                 This is a skill I learned
               </h2>
             </div>
@@ -22,6 +30,7 @@ const Skills = () => {
             <Link
               to={"/skills"}
               className="w-full px-4 lg:w-1/2 xl:w-1/3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
+              data-aos="zoom-in-up"
             >
               <div className="bg-white rounded-xl shadow-light overflow-hidden mb-10">
                 <img src={ReactPicture} alt="programming" className="w-full" />
@@ -45,6 +54,7 @@ const Skills = () => {
             <Link
               to={"/skills"}
               className="w-full px-4 lg:w-1/2 xl:w-1/3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
+              data-aos="zoom-in-up"
             >
               <div className="bg-white rounded-xl shadow-light overflow-hidden mb-10">
                 <img
@@ -71,6 +81,7 @@ const Skills = () => {
             <Link
               to={"/skills"}
               className="w-full px-4 lg:w-1/2 xl:w-1/3 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
+              data-aos="zoom-in-up"
             >
               <div className="bg-white rounded-xl shadow-light overflow-hidden mb-10">
                 <img src={JSPicture} alt="programming" className="w-full" />

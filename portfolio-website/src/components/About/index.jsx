@@ -1,12 +1,10 @@
-import React from "react";
-
 const About = () => {
   return (
     <div>
       <section id="about" className="pt-36 pb-32">
         <div className="container">
           <div className="flex flex-wrap">
-            <div className="w-full px-4 mb-10 lg:w-1/2">
+            <div className="w-full px-4 mb-10 lg:w-1/2 " data-aos="fade-up">
               <h4 className="font-bold upparcase text-third text-lg mb-3">
                 About Me
               </h4>
@@ -26,7 +24,11 @@ const About = () => {
               </p>
             </div>
 
-            <div className="w-full px-4 lg:w-1/2">
+            <div
+              className="w-full px-4 lg:w-1/2"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+            >
               <h2 className="font-bold text-dark text-3xl mb-3 max-w-md lg:text-4xl lg:mt-10">
                 Let's Connect
               </h2>

@@ -1,11 +1,23 @@
 import React from "react";
 import mainPicture from "../../assets/images/Main.png";
+import { useEffect } from "react";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Hero = ({ title1, title2 }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
   return (
     <section id="home" className="pt-20 pb-[100px] bg-primary">
       <div className="container">
         <div className="flex flex-wrap items-center justify-center">
-          <div className="w-full text-center px-4 lg:w-1/2">
+          <div
+            className="w-full text-center px-4 lg:w-1/2"
+            data-aos="fade-right"
+          >
             <h1 className="text-base font-extrabold text-secondary md:text-xl ">
               Hallo Everyone, this is
               <span className="block font-bold text-white text-4xl mt-1 lg:text-4xl">
@@ -26,7 +38,7 @@ const Hero = ({ title1, title2 }) => {
             </div>
           </div>
 
-          <div className="w-full self-end px-4 lg:w-1/2">
+          <div className="w-full self-end px-4 lg:w-1/2" data-aos="fade-left">
             <div className="relative mt-10 lg:mt-9 lg:right-0">
               <img
                 src={mainPicture}
