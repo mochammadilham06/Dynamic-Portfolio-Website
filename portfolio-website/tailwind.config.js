@@ -18,7 +18,7 @@ module.exports = {
         fifth: "#F8F8F8",
       },
       fontFamily: {
-        montserrat: ["montserrat"],
+        montserrat: ["Montserrat"],
       },
       boxShadow: {
         light: "-1px 5px 16px 7px rgba(255, 255, 255, 0.34);",
