@@ -12,15 +12,7 @@ const About = () => {
                 Get on, Get To Know Me
               </h2>
               <p className="font-medium text-base text-fourth max-w-lg lg:text-lg">
-                I am an undergraduate student with a computer science
-                background. I'm currently interested in learning Mobile-based
-                Applications using the React Native Framework, therefore I
-                joined the Jabar Coding Camp to be able to learn Mobile
-                programming and hope to get hands-on experience in creating
-                mobile applications. I can also use Java programming language
-                for Desktop based Application development. I have experience
-                completing 2 individual final project, there is Desktop-based
-                Monitoring System and Mobile-based To do list applications.
+                I am an undergraduate student with a background in computer science. Currently I am interested in learning How to Become a Top Search Ideal ReactJS Front-End Engineer, therefore I joined the Merdeka Campus program to be able to learn Web Programming and hope to get hands-on experience in website creation. I have experience completing 2 individual final projects, namely Systems Desktop based monitoring and Dynamic Portfolio Website application. I am able to work collaboratively using the Version Control System.
               </p>
             </div>
 
