@@ -21,7 +21,6 @@ const ModalUpdatePortfolio = ({ data }) => {
     description,
   };
 
-  console.log(updatePortfolio);
   const [toggleEdit, setToggleEdit] = useState(false);
   const [imageUpdate, setImageUpdate] = useState(null);
   const [dataUpdate, setDataUpdate] = useState(updatePortfolio);
