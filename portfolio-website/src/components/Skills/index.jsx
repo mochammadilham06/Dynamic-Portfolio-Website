@@ -3,7 +3,6 @@ import CONST from "../../utils/constants";
 import { Link } from "react-router-dom";
 import { JSPicture, ReactPicture, TailwindPicture } from "../../assets";
 const Skills = () => {
-  console.log(CONST);
   return (
     <div>
       <section id="blog" className="pb-11 pt-11 bg-primary">

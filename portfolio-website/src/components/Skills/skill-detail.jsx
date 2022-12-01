@@ -11,7 +11,6 @@ const DetailSkill = () => {
   const { data, loading } = useQuery(getSkillsById, {
     variables: { id: setId },
   });
-  console.log(data);
   if (loading) {
     return <LoadingSvg />;
   }

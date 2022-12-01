@@ -50,7 +50,6 @@ const AddSkill = () => {
   const HANDLECHANGEFIREBASE = (e) => {
     e.preventDefault();
     const file = e.target?.files[0];
-    console.log(file);
     if (!file) return;
     const storageRef = ref(storage, `skills/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -100,7 +99,6 @@ const AddSkill = () => {
           try {
             const fileUrl = image;
             const fileRef = ref(storage, fileUrl);
-            console.log(fileUrl);
             deleteObject(fileRef).then(() => {
               deleteSkillsData({
                 variables: {
@@ -350,8 +348,6 @@ const AddSkill = () => {
                             />
                           </div>
                         )}
-
-                        {console.log(imgUrl)}
                       </>
                     </div>
                   </div>

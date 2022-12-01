@@ -11,7 +11,6 @@ const DetailPortfolio = () => {
   const { data, loading } = useQuery(getPortfolio, {
     variables: { id: setId },
   });
-  console.log(data);
   if (loading) {
     return <LoadingSvg />;
   }

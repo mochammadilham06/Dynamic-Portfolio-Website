@@ -35,7 +35,6 @@ const Layout = () => {
             title: "Oops...",
             text: "Logout is Error",
           });
-          console.log(error);
         }
       }
     });

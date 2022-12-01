@@ -21,7 +21,6 @@ const ModalUpdateSkills = ({ data }) => {
     description,
   };
 
-  console.log(updateSkills);
   const [toggleEdit, setToggleEdit] = useState(false);
   const [imageUpdate, setImageUpdate] = useState(null);
   const [dataUpdate, setDataUpdate] = useState(updateSkills);

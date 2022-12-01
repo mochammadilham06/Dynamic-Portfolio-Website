@@ -44,7 +44,6 @@ const AddPortlio = () => {
   const HANDLECHANGEFIREBASE = (e) => {
     e.preventDefault();
     const file = e.target?.files[0];
-    console.log(file);
     if (!file) return;
     const storageRef = ref(storage, `files/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -110,7 +109,6 @@ const AddPortlio = () => {
           try {
             const fileUrl = image;
             const fileRef = ref(storage, fileUrl);
-            console.log(fileUrl);
             deleteObject(fileRef).then(() => {
               deletePorto({
                 variables: {
@@ -346,8 +344,6 @@ const AddPortlio = () => {
                             />
                           </div>
                         )}
-
-                        {console.log(imgUrl)}
                       </>
                     </div>
                   </div>
